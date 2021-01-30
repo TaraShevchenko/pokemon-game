@@ -1,18 +1,23 @@
 import style from './style.module.css'
 
-const Layout = (props) => {
+const Layout = ({id, title, urlBg, colorBg, children}) => {
+
+    let layoutStyle;
+
+    if (urlBg) layoutStyle = {background:`url(${urlBg})`}
+    if (colorBg) layoutStyle = {background:colorBg}
 
     return (
-        <section className={style.root} id={props.id}
-                 style={ props.colorBg ? {background:props.colorBg} : {background:`url(${props.urlBg})`}}>
+        <section className={style.root} id={id}
+                 style={ layoutStyle }>
             <div className={style.wrapper}>
                 <article>
                     <div className={style.title}>
-                        <h3> {props.title} </h3>
+                        <h3> {title} </h3>
                         <span className={style.separator}></span>
                     </div>
                     <div className={`${style.desc} ${style.full}`}>
-                        <p> {props.desc} </p>
+                         {children}
                     </div>
                 </article>
             </div>
