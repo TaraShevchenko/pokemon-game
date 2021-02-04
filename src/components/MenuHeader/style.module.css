@@ -48,6 +48,8 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    opacity: 0;
+    z-index: -1;
 }
 
 .menuContainer::before,
@@ -215,7 +217,7 @@
 
 /*navbar*/
 
-#navbar {
+.navbar {
    position: fixed;
    z-index: 9999;
    width: 100%;
@@ -224,11 +226,11 @@
    justify-content: center;
 }
 
-#navbar.bgActive {
+.navbar.bgActive {
     background: #181d23;
 }
 
-#navbar .navWrapper {
+.navbar .navWrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -237,7 +239,13 @@
     padding: 0 2rem;
 }
 
-#navbar .brand {
+.navbar .brand {
+    font-size: 1.6rem;
+    color: #fafafa;
+    cursor: pointer;
+}
+
+.navbar .disable {
     font-size: 1.6rem;
     color: #fafafa;
     cursor: default;
@@ -301,7 +309,7 @@
 }
 
 @media only screen and (max-width: 849px) {
-    #navbar {
+    .navbar {
         background: #181d23aa;
     }
 }

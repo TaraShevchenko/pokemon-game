@@ -1,46 +1,39 @@
 import s from "../../style.module.css";
+import cn from "classnames";
+import {Link} from "react-router-dom";
 
-const Menu = ({onMenuItemClick, active}) => {
+const Menu = ({handleClickNull, isActive}) => {
 
-    const handleClickHome = () => {
-        console.log('handleClickHome')
-        onMenuItemClick && onMenuItemClick('home');
-    }
-
-    const handleClickGame = () => {
-        console.log('handleClickGame')
-        onMenuItemClick && onMenuItemClick('game');
-    }
+    const menuItems = [
+        {
+            title: 'HOME',
+            to: '/'
+        },
+        {
+            title: 'GAME',
+            to: '/game'
+        },
+        {
+            title: 'ABOUT',
+            to: '/about'
+        },
+        {
+            title: 'CONTACT',
+            to: '/contact'
+        }
+    ]
 
     return (
-        <div className={`${s.menuContainer} ${active ? s.active : s.deactive}`}>
+        <div className={cn(s.menuContainer, {
+            [s.active]: isActive === true,
+            [s.deactive]: isActive === false
+        })}>
             <div className={s.overlay}/>
             <div className={s.menuItems}>
                 <ul>
-                    <li>
-
-                        <a onClick={handleClickHome}>
-                            HOME
-                        </a>
-                    </li>
-                    <li>
-
-                        <a onClick={handleClickGame}>
-                            GAME
-                        </a>
-                    </li>
-                    <li>
-
-                        <a>
-                            ABOUT
-                        </a>
-                    </li>
-                    <li>
-
-                        <a>
-                            CONTACT
-                        </a>
-                    </li>
+                    {
+                        menuItems.map(item =><li><Link onClick={handleClickNull} to={item.to}>{item.title}</Link></li>)
+                    }
                 </ul>
             </div>
         </div>

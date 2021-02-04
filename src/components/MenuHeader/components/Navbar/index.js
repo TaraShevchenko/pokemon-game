@@ -1,15 +1,20 @@
 import s from "../../style.module.css";
+import cn from 'classnames'
+import {Link} from "react-router-dom";
 
-const Navbar = ({handleClickActive, title, active}) => {
+const Navbar = ({bgActive ,handleClickActive, title, isActive}) => {
 
     return (
-        <nav id={s.navbar}>
+        <nav className={cn(s.navbar,{[s.bgActive]: bgActive})}>
             <div className={s.navWrapper}>
-                <p className={s.brand}>
+                <Link to="/" className={cn(s.brand, {[s.disable]: !bgActive})}>
                     {title}
-                </p>
+                </Link>
 
-                <a onClick={handleClickActive} className={`${s.menuButton} ${active ? s.active : s.deactive}`}>
+                <a onClick={handleClickActive} className={cn(s.menuButton, {
+                    [s.active]: isActive === true,
+                    [s.deactive]: isActive === false
+                })}>
                     <span/>
                 </a>
 

@@ -1,23 +1,17 @@
 import cn from 'classnames'
-import { useState } from 'react'
-
 import image from './assets/card-back-side.jpg'
 
 import s from './style.module.css'
 
 
 
-const PokemonCard = ({name, id, type, img, values}) => {
+const PokemonCard = ({name, id, type, img, values, onClick, isActive}) => {
 
-    const [isActive, setActive] = useState(false)
 
-    const onCard = () => {
-        setActive(!isActive)
-    }
 
     return (
         <div className={s.root}>
-            <div onClick={onCard} className={cn(s.pokemonCard, {[s.active]: isActive})}>
+            <div onClick={() => onClick(id)} className={cn(s.pokemonCard, {[s.active]: isActive.includes(id)})}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap, s.front)}>
                         <div className={cn(s.pokemon, s[type])}>

@@ -1,30 +1,31 @@
 /* eslint-disable */
 
-import s from './style.module.css'
 import {useState} from "react";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 
-const MenuHeader = ({onClickButton, title}) => {
+const MenuHeader = ({bgActive, title}) => {
 
-    const [active, setActive] = useState(false)
+    const [isActive, setActive] = useState(null)
 
     const handleClickActive = () => {
-        setActive(!active)
+        setActive(!isActive)
     }
 
-    const handleClick = (page) => {
-        console.log('MenuHeader')
-        onClickButton && onClickButton(page)
+    const handleClickNull = () => {
+        setActive(null)
     }
+
+    console.log(bgActive)
+
 
     return (
-        <>
-            <Menu active={active} title={title} onMenuItemClick={handleClick} />
+        <div className='menu-header'>
+            <Menu isActive={isActive} handleClickNull={handleClickNull}/>
 
-            <Navbar active={active} title={title} handleClickActive={handleClickActive} />
+            <Navbar bgActive={bgActive} isActive={isActive} title={title} handleClickActive={handleClickActive}/>
 
-        </>
+        </div>
     )
 }
 
