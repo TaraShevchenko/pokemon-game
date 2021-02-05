@@ -1,4 +1,5 @@
-import style from './style.module.css'
+import s from './style.module.css'
+import cn from 'classnames'
 
 const Layout = ({id, title, urlBg, colorBg, children}) => {
 
@@ -8,15 +9,19 @@ const Layout = ({id, title, urlBg, colorBg, children}) => {
     if (colorBg) layoutStyle = {background:colorBg}
 
     return (
-        <section className={style.root} id={id}
+        <section className={s.root} id={id}
                  style={ layoutStyle }>
-            <div className={style.wrapper}>
+            <div className={s.wrapper}>
                 <article>
-                    <div className={style.title}>
-                        <h3> {title} </h3>
-                        <span className={style.separator}></span>
+                    <div className={s.title}>
+                        <h3>
+                            {title}
+                        </h3>
+                        <span className={s.separator}>
+
+                        </span>
                     </div>
-                    <div className={`${style.desc} ${style.full}`}>
+                    <div className={cn(s.desc, s.full)}>
                          {children}
                     </div>
                 </article>
