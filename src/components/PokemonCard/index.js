@@ -4,14 +4,17 @@ import image from './assets/card-back-side.jpg'
 import s from './style.module.css'
 
 
+const PokemonCard = ({name, id, type, img, values, onClickActive, isActive}) => {
 
-const PokemonCard = ({name, id, type, img, values, onClick, isActive}) => {
 
+    const onClick = () => {
+        onClickActive && onClickActive(id)
+    }
 
 
     return (
         <div className={s.root}>
-            <div onClick={() => onClick(id)} className={cn(s.pokemonCard, {[s.active]: isActive.includes(id)})}>
+            <div onClick={onClick} className={cn(s.pokemonCard, {[s.active]: isActive.includes(id)})}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap, s.front)}>
                         <div className={cn(s.pokemon, s[type])}>
@@ -34,7 +37,7 @@ const PokemonCard = ({name, id, type, img, values, onClick, isActive}) => {
                 </div>
 
                 <div className={s.cardBack}>
-                    <div className={cn(s.wrap, s.back)} >
+                    <div className={cn(s.wrap, s.back)}>
                         <img src={image} alt="Сard Backed"/>
                     </div>
                 </div>

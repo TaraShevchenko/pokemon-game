@@ -7,10 +7,12 @@ import ContactPage from "./routes/Contact";
 import AboutPage from "./routes/About";
 import Footer from "./components/Footer";
 import MenuHeader from "./components/MenuHeader";
-
-import s from './app.module.css'
-import cn from 'classnames'
 import NotFound from "./routes/NotFound/NotFound";
+
+import cn from 'classnames'
+import s from './app.module.css'
+
+
 
 
 const App = () => {
