@@ -11,6 +11,8 @@ import NotFound from "./routes/NotFound/NotFound";
 
 import cn from 'classnames'
 import s from './app.module.css'
+import {FireBaseContext} from "./context/firebaseContext";
+import Firebase from "./service/firebase";
 
 
 
@@ -20,6 +22,8 @@ const App = () => {
     const match = useRouteMatch('/');
 
     return (
+
+        <FireBaseContext.Provider value={new Firebase()}>
         <Switch>
             <Route path="/404">
                 <NotFound />
@@ -46,7 +50,7 @@ const App = () => {
                 </>
             </Route>
         </Switch>
-
+        </FireBaseContext.Provider>
 
     )
 

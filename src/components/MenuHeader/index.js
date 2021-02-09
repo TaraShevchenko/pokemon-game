@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {useState} from "react";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
@@ -15,8 +13,6 @@ const MenuHeader = ({bgActive, title}) => {
     const handleClickNull = () => {
         setActive(null)
     }
-
-    console.log(bgActive)
 
 
     return (
