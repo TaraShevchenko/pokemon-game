@@ -4,14 +4,17 @@ import image from './assets/card-back-side.jpg'
 import s from './style.module.css'
 
 
+const PokemonCard = ({name, id, type, img, values, onClickActive, active, minimize}) => {
 
-const PokemonCard = ({name, id, type, img, values, onClick, isActive}) => {
 
+    const onClick = () => {
+        onClickActive && onClickActive(id)
+    }
 
 
     return (
-        <div className={s.root}>
-            <div onClick={() => onClick(id)} className={cn(s.pokemonCard, {[s.active]: isActive.includes(id)})}>
+        <div className={cn(s.noBoard)}>
+            <div onClick={onClick} className={cn(s.pokemonCard, {[s.active]: active})}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap, s.front)}>
                         <div className={cn(s.pokemon, s[type])}>
@@ -24,18 +27,18 @@ const PokemonCard = ({name, id, type, img, values, onClick, isActive}) => {
                             <div className={s.imgContainer}>
                                 <img src={img} alt={name}/>
                             </div>
-                            <div className={s.info}>
+                            { !minimize && (<div className={s.info}>
                                 <span className={s.number}>#{id}</span>
                                 <h3 className={s.name}> {name} </h3>
                                 <small>Type:<span> {type} </span></small>
-                            </div>
+                            </div>)}
                         </div>
                     </div>
                 </div>
 
                 <div className={s.cardBack}>
-                    <div className={cn(s.wrap, s.back)} >
-                        <img src={image} alt="Сard Backed"/>
+                    <div className={cn(s.wrap, s.back)}>
+
                     </div>
                 </div>
 

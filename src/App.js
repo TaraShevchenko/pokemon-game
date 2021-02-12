@@ -7,10 +7,14 @@ import ContactPage from "./routes/Contact";
 import AboutPage from "./routes/About";
 import Footer from "./components/Footer";
 import MenuHeader from "./components/MenuHeader";
-
-import s from './app.module.css'
-import cn from 'classnames'
 import NotFound from "./routes/NotFound/NotFound";
+
+import cn from 'classnames'
+import s from './app.module.css'
+import {FireBaseContext} from "./context/firebaseContext";
+import Firebase from "./service/firebase";
+
+
 
 
 const App = () => {
@@ -18,6 +22,8 @@ const App = () => {
     const match = useRouteMatch('/');
 
     return (
+
+        <FireBaseContext.Provider value={new Firebase()}>
         <Switch>
             <Route path="/404">
                 <NotFound />
@@ -44,7 +50,7 @@ const App = () => {
                 </>
             </Route>
         </Switch>
-
+        </FireBaseContext.Provider>
 
     )
 
